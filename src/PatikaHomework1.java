@@ -157,9 +157,22 @@ class ServiceClass {
 	}
 
 	public double getAverageSquareMeter() {
-
-		return (getTotalHousePrice() + getTotalVillaPrice() + getTotalSummerHousePrice())
-				/ (houses.size() + villas.size() + summerHouses.size());
+		
+		int totalSquareMeter = 0;
+		
+		int totalHouses = houses.size() + villas.size() + summerHouses.size();
+		
+		for (int i = 0; i < houses.size(); i++) {
+			totalSquareMeter += houses.get(i).getSquareMeter();
+		}
+		for (int i = 0; i < villas.size(); i++) {
+			totalSquareMeter += villas.get(i).getSquareMeter();
+		}
+		for (int i = 0; i < summerHouses.size(); i++) {
+			totalSquareMeter += summerHouses.get(i).getSquareMeter();
+		}
+		
+		return (double) totalSquareMeter / totalHouses;
 	}
 
 }
@@ -173,14 +186,16 @@ public class PatikaHomework1 {
 		System.out.println("Villa list: \n" + houseService.getVillaList());
 		System.out.println("Summer House list: \n" + houseService.getSummerHouseList());
 
-		System.out.println("Total house price: " + houseService.getTotalHousePrice());
-		System.out.println("Total villa price: " + houseService.getTotalVillaPrice());
-		System.out.println("Total summer house price: " + houseService.getTotalSummerHousePrice());
-		System.out.println("Total price of all types of houses: " + houseService.getTotalPrice());
+		System.out.println("Total house price: " + houseService.getTotalHousePrice() + "$");
+		System.out.println("Total villa price: " + houseService.getTotalVillaPrice() + "$");
+		System.out.println("Total summer house price: " + houseService.getTotalSummerHousePrice() + "$");
+		System.out.println("Total price of all types of houses: " + houseService.getTotalPrice() + "$");
 
 		System.out.println("Average square meter of houses: " + houseService.getAverageHouseSquareMeter());
 		System.out.println("Average square meter of villas: " + houseService.getAverageVillaSquareMeter());
-		System.out.println("Average square meter of summer houses: " + houseService.getAverageSummerHouseSquareMeter());
-		System.out.println("Average square meter of all types of houses: " + houseService.getAverageSquareMeter());
+		System.out.println("Average square meter of summer houses: "
+				+ String.format("%.2f", houseService.getAverageSummerHouseSquareMeter()));
+		System.out.println("Average square meter of all types of houses: "
+				+ String.format("%.2f", houseService.getAverageSquareMeter()));
 	}
 }
