@@ -1,56 +1,13 @@
+package Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
-class House {
-	private int price;
-	private int squareMeter;
-	private int rooms;
-	private int halls;
+import Entities.House;
+import Entities.SummerHouse;
+import Entities.Villa;
 
-	public House(int price, int squareMeter, int rooms, int halls) {
-		this.price = price;
-		this.squareMeter = squareMeter;
-		this.rooms = rooms;
-		this.halls = halls;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-
-	public int getSquareMeter() {
-		return squareMeter;
-	}
-
-	public int getRooms() {
-		return rooms;
-	}
-
-	public int getHalls() {
-		return halls;
-	}
-
-	@Override
-	public String toString() {
-		return "House [price=" + price + "$, squareMeter=" + squareMeter + ", rooms=" + rooms + ", halls=" + halls
-				+ "]\n";
-	}
-
-}
-
-class Villa extends House {
-	public Villa(int price, int squareMeter, int rooms, int halls) {
-		super(price, squareMeter, rooms, halls);
-	}
-}
-
-class SummerHouse extends House {
-	public SummerHouse(int price, int squareMeter, int rooms, int halls) {
-		super(price, squareMeter, rooms, halls);
-	}
-}
-
-class ServiceClass {
+public class ServiceClass {
 	private List<House> houses;
 	private List<Villa> villas;
 	private List<SummerHouse> summerHouses;
@@ -175,27 +132,4 @@ class ServiceClass {
 		return (double) totalSquareMeter / totalHouses;
 	}
 
-}
-
-public class PatikaHomework1 {
-	public static void main(String[] args) {
-
-		ServiceClass houseService = new ServiceClass();
-
-		System.out.println("House list: \n" + houseService.getHouseList());
-		System.out.println("Villa list: \n" + houseService.getVillaList());
-		System.out.println("Summer House list: \n" + houseService.getSummerHouseList());
-
-		System.out.println("Total house price: " + houseService.getTotalHousePrice() + "$");
-		System.out.println("Total villa price: " + houseService.getTotalVillaPrice() + "$");
-		System.out.println("Total summer house price: " + houseService.getTotalSummerHousePrice() + "$");
-		System.out.println("Total price of all types of houses: " + houseService.getTotalPrice() + "$");
-
-		System.out.println("Average square meter of houses: " + houseService.getAverageHouseSquareMeter());
-		System.out.println("Average square meter of villas: " + houseService.getAverageVillaSquareMeter());
-		System.out.println("Average square meter of summer houses: "
-				+ String.format("%.2f", houseService.getAverageSummerHouseSquareMeter()));
-		System.out.println("Average square meter of all types of houses: "
-				+ String.format("%.2f", houseService.getAverageSquareMeter()));
-	}
 }
